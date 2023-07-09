@@ -1,0 +1,26 @@
+//
+// Created by Manajit Halder
+// For Project Scrumdinger on 23/03/23
+// Using Swift 5.0 on MacOS 13.2
+// 
+
+import SwiftUI
+
+struct ThemePicker: View {
+    @Binding var selection: Theme
+    
+    var body: some View {
+        Picker("Theme", selection: $selection) {
+            ForEach(Theme.allCases) { theme in
+                ThemeView(theme: theme)
+                    .tag(theme)
+            }
+        }
+    }
+}
+
+struct ThemePicker_Previews: PreviewProvider {
+    static var previews: some View {
+        ThemePicker(selection: .constant(.periwinkle))
+    }
+}
