@@ -1,0 +1,24 @@
+//
+// Created by Manajit Halder
+// For Project FirebaseChatApp on 15/11/22
+// Using Swift 5.0 on MacOS 12.4
+// 
+
+import Foundation
+import SwiftUI
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+}
+                  
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+            
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners:  corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
